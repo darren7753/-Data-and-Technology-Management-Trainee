@@ -55,7 +55,7 @@ def input_missing_values(df, target_col, group_col, method="mean"):
 # Load dataset
 @st.cache_data
 def load_data():
-    df = pd.read_csv("../datasets/customer-data.csv")
+    df = pd.read_csv("datasets/customer-data.csv")
     return df
 
 df = load_data()
