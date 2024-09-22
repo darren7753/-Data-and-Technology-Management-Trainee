@@ -1,0 +1,31 @@
+name: Run SARIMA Analysis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  run_sarima:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11.5'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas==2.2.2 pmdarima==2.0.4 statsmodels==0.14.2 scikit-learn==1.4.2
+
+    - name: Run SARIMA script
+      run: |
+        python assignments/sarima.py
